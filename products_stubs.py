@@ -20,7 +20,18 @@ class Product:
 
 
   def make_purchase(self, quantity):
-      pass
+    if quantity <= 0:
+        print("Purchase quantity must be greater than zero.")
+        return  # Added return to exit the function early
+
+    if quantity > self.amount:
+        print(f"Insufficient quantity: only {self.amount} items available.")
+        return  # Added return to exit the function early
+
+    total_price = self.get_price(quantity)
+    self.amount -= quantity  # This is more concise
+    print(f"Purchase successful: {quantity} {self.name}(s) bought for ${total_price:.2f}.")
+    print(f"Remaining stock: {self.amount}")
 
 # create product object
 # make purchases against different product quantities (make sure to run each test case)
